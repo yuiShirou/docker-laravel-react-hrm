@@ -1,17 +1,17 @@
+# Use the official Node.js image
 FROM node:16-alpine
 
 # Set working directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Install dependencies
-COPY package.json ./
-RUN npm install
+# Install create-react-app globally (optional)
+RUN npm install -g create-react-app
 
-# Copy the source files
-COPY . .
+# Create a new React app in the current directory
+RUN npx create-react-app .
 
 # Expose port 3000
 EXPOSE 3000
 
-# Start React app
+# Start the app
 CMD ["npm", "start"]
